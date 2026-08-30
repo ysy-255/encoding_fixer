@@ -1,0 +1,23 @@
+{
+	"manifest_version": 2,
+	"name": "Encoding Fixer",
+	"version": "1.0",
+	"description": "HTMLの文字コードを判定して修正します。",
+
+	"background": {
+		"scripts": ["detect-encoding.js", "background.js"]
+	},
+	"permissions": [
+		"webRequest",
+		"webRequestBlocking",
+		"https://web.archive.org/*"
+	],
+	"browser_specific_settings": {
+		"gecko": {
+			"id": "{00e2fa1f-b3dc-493a-840d-7f389a6bb423}",
+			"data_collection_permissions": {
+				"required": ["none"]
+			}
+		}
+	}
+}
