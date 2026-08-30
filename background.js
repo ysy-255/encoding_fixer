@@ -69,15 +69,19 @@ browser.webRequest.onBeforeRequest.addListener(
 					// charsetを判定する
 					const encoding = detectEncoding(raw);
 
+					if (encoding === "utf-8") {
+						// UTF-8の場合は、受信したデータをそのまま返す
+						filter.write(raw);
+						return;
+					}
+
 					// 判定したcharsetでデコードする
 					const decoded = new TextDecoder(encoding, { fatal: false }).decode(raw);
 
 					// UTF-8のUint8Arrayに変換する
 					const encoded = new TextEncoder().encode(decoded);
 
-					if (encoding !== "utf-8") {
-						console.log(`Encoding Fixer: ${details.url} - ${encoding} -> utf-8`);
-					}
+					console.log(`Encoding Fixer: ${details.url} - ${encoding} -> utf-8`);
 
 					// 変換したデータを返す
 					filter.write(encoded);
