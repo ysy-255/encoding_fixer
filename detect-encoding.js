@@ -27,15 +27,20 @@ function getGuessByScoring(bytes, candidates) {
 }
 
 function scoreEncoding(text) {
-	const ascii_count = (text.match(/[\u0000-\u007F]/g) || []).length;
+	const roman_count = (text.match(/[A-Za-z0-9]/g) || []).length;
 	const hiragana_count = (text.match(/[\u3040-\u309F]/g) || []).length;
 	const katakana_count = (text.match(/[\u30A0-\u30FF]/g) || []).length;
 	// https://www.unicode.org/charts/PDF/U3000.pdf
-	const japanese_punctuation_count = (text.match(/[\u3001-\u3003\u3005\u3008-\u3012\u301C]/g) || []).length;
+	// https://www.unicode.org/charts/PDF/UFF00.pdf
+	const fullwidth_count = (text.match(/[\uFF10-\uFF19\uFF21-\uFF3A\uFF41-\uFF5A]/g) || []).length;
+	const symbol_count = (text.match(/[\u3008-\u3011\u301C\uFF01\uFF08\uFF09\uFF0C\uFF0E\uFF0F\uFF1A-\uFF20]/g) || []).length;
+	const japanese_punctuation_count = (text.match(/[\u3001\u3002]/g) || []).length;
 	return (
-		ascii_count * 2 +
+		roman_count * 1 +
 		hiragana_count * 50 +
 		katakana_count * 40 +
-		japanese_punctuation_count * 200
+		fullwidth_count * 100 +
+		symbol_count * 200 +
+		japanese_punctuation_count * 1000
 	)
 }
