@@ -17,7 +17,8 @@
 			"id": "{00e2fa1f-b3dc-493a-840d-7f389a6bb423}",
 			"data_collection_permissions": {
 				"required": ["none"]
-			}
+			},
+			"update_url": "https://ysy-255.github.io/encoding_fixer/updates.json"
 		}
 	}
 }
