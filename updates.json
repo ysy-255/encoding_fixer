@@ -1,0 +1,12 @@
+{
+  "addons": {
+    "{00e2fa1f-b3dc-493a-840d-7f389a6bb423}": {
+      "updates": [
+		{
+		  "version": "1.0",
+		  "update_link": "https://github.com/ysy-255/encoding_fixer/releases/download/v1.0/encoding_fixer-1.0.xpi"
+		}
+	  ]
+	}
+  }
+}
